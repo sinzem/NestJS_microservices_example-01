@@ -1,6 +1,7 @@
 // npm i -g @nestjs/cli
 // nest new 01_example
 // npm install --save @nestjs/typeorm typeorm pg
+// npm i @nestjs/cqrs
 
 // npx nest g lib providers   - создаем библиотеку провайдеров(просит указать префикс, пишем @lib), удаляем сервисы, оставляем модуль
 
@@ -20,3 +21,10 @@
 // В package.json добавляем скрипты запуска typeorm и migration
     // npm run migration:gen --name=post_create  - пример запуска миграций(подставляем нужное имя) - в д.с выдало предупреждение, что таблицы пустые и мигрировать нечему
     // npm run migration:run  - накатит созданную миграцию
+
+
+// npx nest g lib post  - создаем библиотеку, на запрос указать префикс пишем @lib, внутри папку domain с интерфейсом и аггрегатором для создания/обработки постов, также внутри пример вынесения сервисов в отдельный класс(папка services)
+
+// npm i class-validator class-transformer  - для валидации входящих данных, автор валидирует не в dto обьектах, а в модулях - пример в post.aggregate.ts
+
+// npx nest g lib errors  - создаем модуль (@lib - библиотеку) для работы с ошибками 

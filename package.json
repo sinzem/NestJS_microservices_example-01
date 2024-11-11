@@ -26,8 +26,11 @@
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.3.0",
     "@nestjs/core": "^10.0.0",
+    "@nestjs/cqrs": "^10.2.8",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/typeorm": "^10.0.2",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "dotenv": "^16.4.5",
     "pg": "^8.13.1",
     "reflect-metadata": "^0.2.0",
@@ -80,7 +83,9 @@
     ],
     "moduleNameMapper": {
       "^@lib/providers(|/.*)$": "<rootDir>/libs/providers/src/$1",
-      "^@lib/entities(|/.*)$": "<rootDir>/libs/entities/src/$1"
+      "^@lib/entities(|/.*)$": "<rootDir>/libs/entities/src/$1",
+      "^@lib/post(|/.*)$": "<rootDir>/libs/post/src/$1",
+      "^@lib/errors(|/.*)$": "<rootDir>/libs/errors/src/$1"
     }
   }
 }
