@@ -27,4 +27,12 @@
 
 // npm i class-validator class-transformer  - для валидации входящих данных, автор валидирует не в dto обьектах, а в модулях - пример в post.aggregate.ts
 
-// npx nest g lib errors  - создаем модуль (@lib - библиотеку) для работы с ошибками 
+// npx nest g lib errors  - создаем модуль (@lib - библиотеку) для работы с ошибками
+
+// npx nest g lib shared  - (префикс @lib) - кастомный глобальный обработчик ошибок
+    // npx nest g f all-exeptions -p shared  - генерируем фильтры в папке shared
+
+
+// Папка post/src/providers - post.repository.ts - репзиторий с типизацией методов для posts
+
+// Папка post/src/application-services  - создаем инжектируемый модуль с сервисами posts 
