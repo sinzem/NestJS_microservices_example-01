@@ -7,6 +7,6 @@ export abstract class PostRepository {
     abstract findOne(id: string): Promise<PostAggregate | null>;
     abstract findAll(
         pagination: PaginationDto /* (подключаем дто для валидации входящих данных - в запросе может приходить лимит страниц и отступ от начала) */
-    ): Promise<[[PostAggregate], number]>;
+    ): Promise<[PostAggregate[], number]>;
     abstract delete(id: string): Promise<boolean>;
 }

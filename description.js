@@ -36,3 +36,13 @@
 // Папка post/src/providers - post.repository.ts - репзиторий с типизацией методов для posts
 
 // Папка libs/post/src/application-services  - создаем инжектируемый модуль с сервисами posts 
+
+
+// npx nest g mo api  - создаем апишку(выдает вопрос, где создавать - проставляем src)
+    // npx nest g co api/controller/post --no-spec  - создаем контроллер(тоже src)
+    // npx nest g mo controllers api/controllers --flat -p src
+
+    // npx nest g mo domains -p src  - модуль для подключения доменов
+
+
+// npx nest g lib auth  - создаем библиотеку для авторизации(с префиксом @lib)
