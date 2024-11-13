@@ -1,11 +1,12 @@
 import { PostEntity } from '@lib/entities';
-import { Module, OnModuleInit } from '@nestjs/common';
+import { Module, OnModuleInit, Post } from '@nestjs/common';
 import { CommandBus, CqrsModule, EventBus, QueryBus } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { POST_COMMANDS_HANDLERS } from './application-services/commands';
 import { POST_EVENTS_HANDLERS } from './application-services/events';
 import { POST_QUERIES_HANDLERS } from './application-services/queries';
 import { PostFacade } from './application-services';
+import { postFacadeFactory } from './providers/post-facade.factory';
 
 @Module({
   imports: [
@@ -15,8 +16,14 @@ import { PostFacade } from './application-services';
   providers: [
     /* (наборы команд/событий/запросов сервисов, обязательно регистрируем при экспорте модуля) */
     ...POST_COMMANDS_HANDLERS,
-    ...POST_EVENTS_HANDLERS,
     ...POST_QUERIES_HANDLERS,
+    ...POST_EVENTS_HANDLERS,
+    {
+      /* (подключаем фасад, фабрику и бусы(обязательно в таком же порядке, как и на фабрике)) */
+      provide: PostFacade,
+      inject: [CommandBus, QueryBus, EventBus], 
+      useFactory: postFacadeFactory,
+    }
   ],
   exports: [
     PostFacade, /* (экспортируем сборку с сервисами) */ 
