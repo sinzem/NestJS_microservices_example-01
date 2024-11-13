@@ -35,4 +35,4 @@
 
 // Папка post/src/providers - post.repository.ts - репзиторий с типизацией методов для posts
 
-// Папка post/src/application-services  - создаем инжектируемый модуль с сервисами posts 
+// Папка libs/post/src/application-services  - создаем инжектируемый модуль с сервисами posts 
