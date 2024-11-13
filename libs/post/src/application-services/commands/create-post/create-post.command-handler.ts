@@ -7,7 +7,7 @@ import { BadRequestException } from "@nestjs/common";
 
 @CommandHandler(CreatePostCommand) 
 export class CreatePostCommandHandler 
-        implements ICommandHandler<CreatePostCommand, PostAggregate> {
+        implements ICommandHandler<CreatePostCommand, PostAggregate> { /* (к имплементируему классу прикрепляем типы самой комманды на входе и что лжидаем на выходе(в д.с обьект PostAggregate - созданный пост)) */
 
     constructor(private readonly postRepository: PostRepository) {}
 
