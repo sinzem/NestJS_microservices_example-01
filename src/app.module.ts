@@ -7,7 +7,9 @@ import { DomainsModule } from './domains/domains.module';
 @Module({
   imports: [
     SharedModule, /* (подключаем кастомный глобальный обработчик ошибок) */
-    ProvidersModule, ApiModule, DomainsModule,
+    ProvidersModule, 
+    ApiModule, 
+    DomainsModule,
   ],
   controllers: [],
   providers: [],

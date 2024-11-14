@@ -25,7 +25,7 @@ export class PostAggregate extends PostServices implements IPost {
 
     @IsBoolean()
     @Exclude()  /* (пример - исключаем данное поле, не будем возвращать его наружу) */
-    published = false;
+    isPublished = false;
 
     @IsString()
     createdAt = new Date().toISOString();

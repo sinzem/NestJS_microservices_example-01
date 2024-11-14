@@ -18,14 +18,13 @@ export class PostAdapter implements PostRepository {
 
     /* (метод для сохранения поста, на входе ожидаем пост, на выходе - промис) */
     async save(post: IPost): Promise<PostAggregate> {
-        if (post?.id) { /* (если у пришедшего поста есть id, значит применяем обновление поста) */
-            const existPost = await this.findOne(post.id); /* (проверяем, есть ли пост по данному id) */
-            if (!existPost) { /* (если поста с пришедшим id нету, выдаем ошибку) */
-               throw new NotFoundException(`Post by id ${post.id} not found`) 
-            }
+
+        const existPost = await this.findOne(post.id); /* (проверяем, есть ли пост по данному id) */
+        if (existPost) { /* (если по данному id есть пост, запускаем функционал обновления) */
+            // throw new NotFoundException(`Post by id ${post.id} not found`)
             const {id, ...toUpdate} = post; /* (разделяем пришедший пост на id и остальное) */
             await this.postRepository.update({id}, toUpdate); /* (обновляем запись в таблице по id, получаем обновленный пост и возвращаем на пользователя) */
-            return this.findOne(post.id);
+            return this.findOne(post.id); 
         }
         /* (если пост пришел без id, создаем новую запись в таблице и возвращаем на пользователя) */
         const savedPost = await this.postRepository.save(post);
@@ -41,7 +40,7 @@ export class PostAdapter implements PostRepository {
                                     })
         if (!existPost) { 
             throw new NotFoundException(`Post by id ${id} not found`) 
-            }
+        }
         return PostAggregate.create(existPost);
     }
 

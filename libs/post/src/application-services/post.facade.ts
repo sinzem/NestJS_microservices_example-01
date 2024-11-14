@@ -14,7 +14,6 @@ import { GetPostQuery,
          GetPostsQuery, 
          GetPostsQueryHandler } from "./queries";
 import { PaginationDto } from "@lib/shared/dto";
-import { get } from "http";
 
 @Injectable()
 export class PostFacade {
