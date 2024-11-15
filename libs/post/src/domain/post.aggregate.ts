@@ -7,6 +7,7 @@ import { DomainError } from "@lib/errors";
 
 /* (класс для работы с постами, сервисы вынесены в папку services, хотя можно прописывать и внутри) */
 export class PostAggregate extends PostServices implements IPost {
+
     /* (наследуем типизацию IPost, но изменяем ее, здесь же валидируем пришедшие данные) */
     @IsUUID()  
     id: string = randomStringGenerator();
@@ -36,14 +37,14 @@ export class PostAggregate extends PostServices implements IPost {
     private constructor() { /* (подключаем для наследования PostServices(AggregateRoot)) */
         super();
     }
-
+    
     /* (метод для создания поста, обьединит пришедшие поля с уже существующими) */
     static create(post: Partial<IPost>) {
         const _post = new PostAggregate();
         // _post.setNotPublished(); /* (пример метода из сервисов, установит поле о публикации в false) */
         Object.assign(_post, post);
         _post.updatedAt = post?.id ? new Date().toISOString() : _post.updatedAt;
-        const errors = validateSync(_post, {whitelist: true}); /* (whitelist - из обьекта будут удалены все поля, не помеченные декораторами(лишние, так как все помеченные)) */
+        const errors = validateSync(_post); /* (whitelist - из обьекта будут удалены все поля, не помеченные декораторами(лишние, так как все помеченные)) */
         if (!!errors.length) {
             throw new DomainError(errors, "Post not valid"); /* (подключаем кастомный класс ошибок, передаем в него обьект с ошибками) */
         }

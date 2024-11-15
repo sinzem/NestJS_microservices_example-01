@@ -9,7 +9,7 @@ export class AllExeptionsFilter<T> implements ExceptionFilter {
         const ctx = host.switchToHttp(); /* (получаем контекст, далее из него req и res) */
         const response = ctx.getResponse();
         const request = ctx.getRequest();
-
+        console.log(request);
         /* (если ошибка определяется, получаем ее статус, если нет - выводим внутреннюю ошибку сервера) */
         const status = exception instanceof HttpException 
                           ? exception.getStatus() 
@@ -29,7 +29,7 @@ export class AllExeptionsFilter<T> implements ExceptionFilter {
             query: request?.query,
             exception: {
                 name: exception["name"],
-                message: exception["message"]
+                message: exception["message"],
             }
         }
     }

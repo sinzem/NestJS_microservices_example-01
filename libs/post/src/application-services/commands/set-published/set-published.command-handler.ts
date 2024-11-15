@@ -21,10 +21,11 @@ export class SetPublishedCommandHandler
                                 return null as PostAggregate;
                             })
         if (!existPost) {
-            throw new BadRequestException(`Post by id ${id} not found`);
+            throw new BadRequestException(`Post by id ${id} not found1`);
         }
         const postAggregate = PostAggregate.create(existPost);
         postAggregate.setPublished();
+        postAggregate.plainToInstance();
         await this.postRepository.save(postAggregate);
         return postAggregate
     }

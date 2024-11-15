@@ -13,6 +13,7 @@ export class CreatePostCommandHandler
 
     async execute({post}: CreatePostCommand): Promise<PostAggregate> {
         const postAggregate = PostAggregate.create(post);
+        postAggregate.plainToInstance();
         const createdPost = await this.postRepository
                             .save(postAggregate)
                             .catch(err => {

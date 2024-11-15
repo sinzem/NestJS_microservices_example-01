@@ -20,10 +20,11 @@ export class UpdatePostCommandHandler
             return null as PostAggregate;
         })
         if (!existPost) {
-            throw new BadRequestException(`Post by id ${post.id} not found`);
+            throw new BadRequestException(`Post by id ${post.id} not found2`);
         }
         Object.assign(existPost, post); /* (если пост существует, добавляем в него новые данные) */
         const postAggregate = PostAggregate.create(existPost);
+        postAggregate.plainToInstance();
         await this.postRepository.save(postAggregate);
         return postAggregate;
     }

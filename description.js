@@ -56,6 +56,15 @@
 // npx nest g d decorators/public --flat --no-spec -p auth   - создаем обложку для декоратора
 
 
+// npm i --save @nestjs/swagger   - для ведения документации, подключаем в main.ts
+
+// npm i @nestjs/graphql @nestjs/apollo @apollo/server graphql  - для подключения graphql(создаем в libs/providers/src/graphql)
+    // резолверы для graphql - в src/api/resolvers - команда для генерации  npx nest g mo api/resolvers -p src
+    // npx nest g r api/resolvers/post -p src --no-spec
+
+
+
+
 
 
 

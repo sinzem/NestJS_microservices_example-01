@@ -13,12 +13,13 @@ export class PostAdapter implements PostRepository {
     private readonly logger = new Logger(PostAdapter.name);
 
     constructor(
-        @InjectRepository(PostEntity) private readonly postRepository: Repository<PostEntity>
+        @InjectRepository(PostEntity)
+        private readonly postRepository: Repository<PostEntity>
     ) {}
 
     /* (метод для сохранения поста, на входе ожидаем пост, на выходе - промис) */
     async save(post: IPost): Promise<PostAggregate> {
-
+        this.logger.debug(post)
         const existPost = await this.findOne(post.id); /* (проверяем, есть ли пост по данному id) */
         if (existPost) { /* (если по данному id есть пост, запускаем функционал обновления) */
             // throw new NotFoundException(`Post by id ${post.id} not found`)
@@ -39,7 +40,7 @@ export class PostAdapter implements PostRepository {
                                         return null;
                                     })
         if (!existPost) { 
-            throw new NotFoundException(`Post by id ${id} not found`) 
+            throw new NotFoundException(`Post by id ${id} not found3`) 
         }
         return PostAggregate.create(existPost);
     }
