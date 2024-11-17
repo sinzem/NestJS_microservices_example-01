@@ -62,7 +62,16 @@
     // резолверы для graphql - в src/api/resolvers - команда для генерации  npx nest g mo api/resolvers -p src
     // npx nest g r api/resolvers/post -p src --no-spec
 
+// npx nest g gu guards/gql -p auth --no-spec --flat  - создаем гуард для graphql
 
+
+// npx nest g mo amqp -p providers  - для rabbit
+// npm i @golevelup/nestjs-rabbitmq  - ставим rabbit для nest
+// npx nest g mo channels -p src  - каналы связи между rabbit и postfacade
+// npx nest g s channels/consumer --no-spec --flat -p src  - сервисы для каналов, по сути дублируем сервисы из postFacade со слушателями от Rabbit
+// Rabbit ставится отдельно как приложение или можно образ в докере, в .env вносим строку подключения AMQP_URI="amqp://guest:guest@127.0.0.1:5672"(название=amqp://login@password@localhost:port), после запуска на данном порте можно открыть старницу rabbit с отчетами о действиях, очереди и т.д
+
+// npx nest g lib amqp-contracts  - (префикс @lib, автор дал @amqp) библиотека контрактов
 
 
 

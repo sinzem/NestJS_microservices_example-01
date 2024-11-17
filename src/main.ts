@@ -24,6 +24,9 @@ async function bootstrap() {
     Logger.log(
       `Swagger documentation on http://localhost:${port}/api-dock`, "Main"
     );
+    Logger.log(
+      `Graphql playground on http://localhost:${port}/graphql`, "Main"
+    );
   });
 }
 bootstrap();
