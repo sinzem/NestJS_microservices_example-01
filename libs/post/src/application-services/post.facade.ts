@@ -39,7 +39,7 @@ export class PostFacade {
     private createPost(post: CreatePostDto) {
         return this.commandBus.execute<
             CreatePostCommand,
-            CreatePostCommandHandler["execute"]
+            Awaited<ReturnType<CreatePostCommandHandler["execute"]>>
             /* (уточняем тип для execute на входе и выходе, иначе createPost высвечивает any) */
         >(new CreatePostCommand(post));
     }
@@ -47,35 +47,35 @@ export class PostFacade {
     private updatePost(post: UpdatePostDto) {
         return this.commandBus.execute<
             UpdatePostCommand,
-            UpdatePostCommandHandler["execute"]
+            Awaited<ReturnType<UpdatePostCommandHandler["execute"]>>
         >(new UpdatePostCommand(post));
     }
 
     private setPublishedPost(id: string) {
         return this.commandBus.execute<
             SetPublishedCommand,
-            SetPublishedCommandHandler["execute"]
+            Awaited<ReturnType<SetPublishedCommandHandler["execute"]>>
         >(new SetPublishedCommand(id));
     }
 
     private deletePost(id: string) {
         return this.commandBus.execute<
             DeletePostCommand,
-            DeletePostCommandHandler["execute"]
+            Awaited<ReturnType<DeletePostCommandHandler["execute"]>>
         >(new DeletePostCommand(id));
     }
 
     private getPost(id: string) {
         return this.queryBus.execute<
             GetPostQuery,
-            GetPostQueryHandler["execute"]
+            Awaited<ReturnType<GetPostQueryHandler["execute"]>>
         >(new GetPostQuery(id))
     }
 
     private getPosts(pagination: PaginationDto) {
         return this.queryBus.execute<
             GetPostsQuery,
-            GetPostsQueryHandler["execute"]
+            Awaited<ReturnType<GetPostsQueryHandler["execute"]>>
         >(new GetPostsQuery(pagination));
     }
 } /* (экспортируем через index.ts и модуль) */
